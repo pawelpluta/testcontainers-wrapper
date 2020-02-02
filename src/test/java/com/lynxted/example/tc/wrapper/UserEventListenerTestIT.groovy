@@ -45,7 +45,7 @@ class UserEventListenerTestIT extends Specification {
 
         then: "User Details are available through REST API"
             WAIT_FOR_PROCESSING.eventually {
-                userDetailsIsRequestedFor(userId).andExpect(jsonPath('$[0].displayName').value(firstName + " " + lastName))
+                userDetailsIsRequestedFor(userId).andExpect(jsonPath('$.displayName').value(firstName + " " + lastName))
             }
     }
 

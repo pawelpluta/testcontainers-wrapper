@@ -1,9 +1,8 @@
 package com.lynxted.example.tc.wrapper;
 
-import java.util.Collections;
-import java.util.List;
 import java.util.function.Function;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,11 +19,11 @@ class UserDetailsController {
     }
 
     @GetMapping("/{userId}")
-    List<UserDetails> getByUserId(@PathVariable("userId") String userId) {
+    ResponseEntity<UserDetails> getByUserId(@PathVariable("userId") String userId) {
         return userRepository.findById(UserId.of(userId))
                              .map(toUserDetails())
-                             .map(List::of)
-                             .orElseGet(Collections::emptyList);
+                             .map(ResponseEntity::ok)
+                             .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     private Function<User, UserDetails> toUserDetails() {
