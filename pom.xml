@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.lynxted.example</groupId>
-    <artifactId>test-containers-wrapper</artifactId>
+    <artifactId>testcontainers-wrapper</artifactId>
     <version>1.0.0</version>
-    <name>test-containers-wrapper</name>
+    <name>testcontainers-wrapper</name>
     <description>Wrapper sample for Test Containers</description>
 
     <properties>
